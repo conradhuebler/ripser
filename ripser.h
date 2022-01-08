@@ -194,6 +194,8 @@ struct diameter_entry_t : std::pair<value_t, entry_t> {
 	    : diameter_entry_t(get_diameter(_diameter_index),
 	                       make_entry(get_index(_diameter_index), 0)) {}
 	diameter_entry_t(const index_t& _index) : diameter_entry_t(0, _index, 0) {}
+
+	diameter_entry_t() = default;
 };
 
 const entry_t& get_entry(const diameter_entry_t& p) { return p.second; }

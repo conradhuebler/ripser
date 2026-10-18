@@ -518,7 +518,7 @@ public:
 	};
 
 	diameter_entry_t get_zero_pivot_facet(const diameter_entry_t simplex, const index_t dim) {
-		static simplex_boundary_enumerator facets(0, *this);
+		simplex_boundary_enumerator facets(0, *this);
 		facets.set_simplex(simplex, dim);
 		while (facets.has_next()) {
 			diameter_entry_t facet = facets.next();
@@ -528,7 +528,7 @@ public:
 	}
 
 	diameter_entry_t get_zero_pivot_cofacet(const diameter_entry_t simplex, const index_t dim) {
-		static simplex_coboundary_enumerator cofacets(*this);
+		simplex_coboundary_enumerator cofacets(*this);
 		cofacets.set_simplex(simplex, dim);
 		while (cofacets.has_next()) {
 			diameter_entry_t cofacet = cofacets.next();
@@ -680,7 +680,7 @@ public:
 	diameter_entry_t init_coboundary_and_get_pivot(const diameter_entry_t simplex,
 	                                               Column& working_coboundary, const index_t& dim,
 	                                               entry_hash_map& pivot_column_index) {
-		static simplex_coboundary_enumerator cofacets(*this);
+		simplex_coboundary_enumerator cofacets(*this);
 		bool check_for_emergent_pair = true;
 		cofacet_entries.clear();
 		cofacets.set_simplex(simplex, dim);
@@ -703,7 +703,7 @@ public:
 	template <typename Column>
 	void add_simplex_coboundary(const diameter_entry_t simplex, const index_t& dim,
 	                            Column& working_reduction_column, Column& working_coboundary) {
-		static simplex_coboundary_enumerator cofacets(*this);
+		simplex_coboundary_enumerator cofacets(*this);
 		working_reduction_column.push(simplex);
 		cofacets.set_simplex(simplex, dim);
 		while (cofacets.has_next()) {
